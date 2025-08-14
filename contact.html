@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Café Serenity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="icon" type="image/png" href="coffee.png">
+    <style>
+        /* Live Chat Widget */
+        
+        .live-chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chat-toggle {
+            background-color: var(--cafe-brown);
+            color: var(--white);
+            border: none;
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .chat-toggle:hover {
+            background-color: var(--cafe-dark);
+            transform: translateY(-3px);
+        }
+        
+        .chat-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .chat-container {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform-origin: bottom right;
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .chat-container.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .chat-header {
+            background-color: var(--cafe-brown);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 80%;
+        }
+        
+        .message.received {
+            align-self: flex-start;
+        }
+        
+        .message.sent {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .message-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .message-content {
+            background-color: var(--cafe-light);
+            padding: 0.8rem;
+            border-radius: 10px;
+        }
+        
+        .message.sent .message-content {
+            background-color: var(--cafe-brown);
+            color: var(--white);
+        }
+        
+        .message-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .message-text {
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+        
+        .message-time {
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+            text-align: right;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        
+        .chat-input button {
+            background-color: var(--cafe-brown);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .chat-input button:hover {
+            background-color: var(--cafe-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-cup">
+                <div class="coffee"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="loading-text">Brewing Experience...</div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Café Serenity</a>
+
+            <div class="menu-icon" id="menuIcon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="menu.html" class="navbar-link">Menu</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="gallery.html" class="navbar-link">Gallery</a></li>
+                <li><a href="contact.html" class="navbar-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1513267048331-5611cad62e41?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3');">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <div class="divider center light"></div>
+            <p class="page-subtitle">We'd love to hear from you! Reach out with questions, feedback, or to book a special event.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">Visit Us</h2>
+                    <div class="divider"></div>
+
+                    <div class="info-block">
+                        <h3 class="info-title">Address</h3>
+                        <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3 class="info-title">Hours</h3>
+                        <p>Monday - Friday: 7am - 7pm<br> Saturday: 8am - 8pm<br> Sunday: 8am - 6pm</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3 class="info-title">Contact</h3>
+                        <p>Phone: (+91) 9834922775 <br> Email: <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com" target="_blank" rel="noopener noreferrer" class="gmail-link">nexlume.co@gmail.com</a></p>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15077.247621162735!2d72.996703!3d19.077065!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0c3a9f0a4a9%3A0x4c2b0c3a9f0a4a9!2sVashi%2C%20Navi%20Mumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1614329231042"
+                                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h2 class="section-title">Send a Message</h2>
+                    <div class="divider"></div>
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Contact Form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <div class="error-message" id="subjectError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
+
+                        <button type="submit" id="submitButton" class="btn btn-primary">Send Message</button>
+                        <div id="formSuccess" class="success-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Real-time Cafe Status Section -->
+    <section class="cafe-status-section">
+        <div class="container">
+            <h2 class="section-title text-center">Visit Us Today</h2>
+            <p class="section-subtitle text-center">Check our real-time status before your visit</p>
+
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-icon">
+                        <div class="status-circle" id="openStatus">
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
+                    <h3>We're Open</h3>
+                    <p class="status-hours">
+                        Today's Hours: <span id="todayHours">7:00 AM - 8:00 PM</span>
+                    </p>
+                    <div class="status-countdown" id="closingIn">
+                        Closing in: <span>4 hours 23 minutes</span>
+                    </div>
+                </div>
+
+                <div class="status-card">
+                    <div class="status-icon">
+                        <div class="busyness-meter">
+                            <div class="busyness-bar" style="height: 40%"></div>
+                        </div>
+                    </div>
+                    <h3>Current Business</h3>
+                    <p class="busyness-level">Moderate</p>
+                    <p class="busyness-description">Good time to visit, moderate wait times.</p>
+                </div>
+
+                <div class="status-card">
+                    <div class="status-icon weather-icon" id="weatherIcon">
+                        ☀️
+                    </div>
+                    <h3>Local Weather</h3>
+                    <p class="weather-temp" id="weatherTemp">72°F</p>
+                    <p class="weather-description" id="weatherDesc">Sunny day, perfect for our patio!</p>
+                </div>
+            </div>
+
+            <div class="find-us-button">
+                <a href="https://www.google.com/maps?q=satraplaza,Vashi,+Navi+Mumbai" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Find Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            <div class="divider center"></div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you take reservations?</h3>
+                    <p class="faq-answer">We generally operate on a first-come, first-served basis, but we do accept reservations for groups of 6 or more. Please contact us at least 48 hours in advance.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Is your café wheelchair accessible?</h3>
+                    <p class="faq-answer">Yes, our café is fully wheelchair accessible with ramp access and accessible restrooms.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you offer WiFi?</h3>
+                    <p class="faq-answer">Yes, we provide complimentary high-speed WiFi for all our customers.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I host a private event at your café?</h3>
+                    <p class="faq-answer">Absolutely! We offer private event bookings during and after regular hours. Please contact us for availability and pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Live Chat Support -->
+    <div class="live-chat-widget">
+        <button class="chat-toggle" id="chatToggle">
+  <span class="chat-icon">💬</span>
+  <span class="chat-label">Chat with us</span>
+</button>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <h3>Café Serenity Support</h3>
+                <button class="chat-close" id="chatClose">×</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message received">
+                    <div class="message-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Support Agent">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-name">Sarah</div>
+                        <div class="message-text">Hi there! Welcome to Café Serenity. How can I help you today?</div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button id="sendMessageBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-title">Café Serenity</h3>
+                    <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    <p>Phone: (+91) 9834922775</p>
+                    <p>Email:
+                        <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com&su=Café%20Enquiry&body=Hello,%0A%0AI am interested in learning more about your café services. Could you please provide details on the menu, pricing, and any special offers?%0A%0ALooking forward to your response.%0A%0AThank you."
+                            target="_blank" rel="noopener noreferrer" class="gmail-link">
+                            nexlume.co@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+                <div class="footer-hours">
+                    <h3 class="footer-title">Hours</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 8pm</p>
+                    <p>Sunday: 8am - 6pm</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nexlume" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <p class="newsletter-label">Subscribe to our newsletter:</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" id="newsletterSubmitBtn" class="btn btn-small">Subscribe</button>
+                        <div id="newsletterMessage" style="display: none; margin-top: 10px; font-size: 14px;"></div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Café Serenity. All rights reserved. | Developed by <a href="https://web-production-8f65..app/" target="_blank">NexLume</a></p>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Live Chat
+        function initLiveChat() {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatClose = document.getElementById('chatClose');
+            const chatContainer = document.getElementById('chatContainer');
+            const messageInput = document.getElementById('messageInput');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Interactive Q&A responses
+            const botResponses = {
+                "hi": [
+                    "Hey there! Welcome to **Café Bliss** ☕✨ How’s your day brewing?",
+                    "Hi! Need some caffeine inspiration? I got you! ☕🔥"
+                ],
+                "hello": [
+                    "Hello! 🌞 Ready to dive into some aromatic coffee goodness?",
+                    "Hey hey! What can I whip up for you today? ☕🍰"
+                ],
+                "hours": [
+                    "We’re open **Monday-Friday 7 AM - 8 PM**, and **weekends 8 AM - 10 PM**! 🌅☕ Perfect for an early-morning espresso or a late-night latte."
+                ],
+                "wifi": [
+                    "Absolutely! We offer **high-speed, free WiFi** 📶💻 – perfect for work, study, or scrolling through your social feed!"
+                ],
+                "location": [
+                    "You can find us at **123 Coffee Street, Cityville** 🏡☕ – tucked away in a cozy little corner of downtown!"
+                ],
+                "menu": [
+                    "Our menu is filled with **rich espressos, velvety lattes, refreshing cold brews, buttery pastries, and gourmet sandwiches**! 🍽️ Check it out on our website! 🌟"
+                ],
+                "best drink": [
+                    "You **must** try our **Café Bliss Cold Brew** – it's slow-steeped for 16 hours, resulting in a **bold, smooth, and slightly sweet** masterpiece! ☕✨"
+                ],
+                "vegan": [
+                    "Absolutely! We have **vegan-friendly lattes, oat milk cappuccinos, plant-based sandwiches, and dairy-free pastries**! 🌱☕ Try our oat milk matcha – it’s a game changer!"
+                ],
+                "vegetarian": [
+                    "Yes! We serve **wholesome vegetarian sandwiches, fresh garden salads, and warm, hearty soups**! 🥑🌿 The avocado toast with chili flakes and lemon drizzle is a customer favorite!"
+                ],
+                "seasonal": [
+                    "Right now, we have the **Pumpkin Spice Latte 🎃☕**, our **Gingerbread Mocha** for a cozy winter feel, and a **Mango Matcha Smoothie** for a fresh tropical twist! 🍵🍑"
+                ],
+                "order": [
+                    "Craving coffee but can’t stop by? 🚀 Order online via **our website, UberEats, or DoorDash**, and we’ll have your coffee steaming hot (or ice cold!) in no time!"
+                ],
+                "reservation": [
+                    "Want to reserve a table for a special meet-up or a study session? 📲 Call us at **(555) 123-4567**, or slide into our **Instagram DMs**!"
+                ],
+                "discount": [
+                    "🎓 **Students get 10% off** with a valid ID!",
+                    "🎉 **Loyalty Program**: Every **5th coffee is FREE** – because we love our regulars! ☕💛",
+                    "☕ Bring your own **reusable cup** and get **$0.50 off** any drink – because sustainability is cool! 🌍♻️"
+                ],
+                "bye": [
+                    "See you soon at **Café Bliss**! ☀️ May your coffee be strong and your day be amazing!",
+                    "Goodbye, coffee lover! ☕ Until next time, stay caffeinated!"
+                ],
+                "coffee": [
+                    "We serve **handcrafted, barista-approved coffees** – from **bold espresso shots** to **creamy caramel macchiatos**! What’s your go-to brew? ☕🔥"
+                ],
+                "tea": [
+                    "If coffee isn’t your thing, we got you! 🍵 We serve **organic black, green, chai, and herbal teas**. Our **Honey Lavender Chamomile** is a crowd favorite!"
+                ],
+                "payment": [
+                    "We accept **cash, credit/debit cards, Apple Pay, and Google Pay**! 💳📲 Contactless payments available for a quick checkout!"
+                ],
+                "brewing methods": [
+                    "Curious about our brewing techniques? ☕ We use **Espresso machines, French Press, Pour-over, and Cold Brew** methods to bring out the **richest flavors in every cup**!"
+                ],
+                "coffee beans": [
+                    "We roast our own **single-origin Arabica beans** from **Colombia, Ethiopia, and Guatemala**! 🌍☕ Want a bag to take home? We sell **whole beans & ground coffee!**"
+                ],
+                "staff": [
+                    "Our **baristas are coffee wizards**! 🧙‍♂️ They handcraft every drink with precision and love. Ask them for **custom recommendations**!"
+                ],
+                "ambiance": [
+                    "Looking for a **cozy, Instagram-worthy café**? 📸 Café Bliss is designed with **warm lighting, rustic wooden tables, and comfy seating** – the perfect chill spot!"
+                ],
+                "sustainability": [
+                    "We love our planet! 🌍 We use **eco-friendly cups, compostable straws, and ethically sourced coffee beans**. Bring your own cup and save **$0.50 on any drink!**"
+                ],
+                "lost and found": [
+                    "Lost something? 💡 We keep **all lost items safely** at the front counter! Call us at **9004798958**, and we’ll check for you!"
+                ]
+            };
+
+            // Toggle chat visibility
+            chatToggle.addEventListener('click', () => chatContainer.classList.add('active'));
+            chatClose.addEventListener('click', () => chatContainer.classList.remove('active'));
+
+            // Send Message Function
+            function sendMessage() {
+                const message = messageInput.value.trim().toLowerCase();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, 'sent');
+                messageInput.value = '';
+
+                // Simulate bot response with a delay
+                showTypingIndicator();
+
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response, 'received');
+                }, 1500);
+            }
+
+            // Find the best response based on user input
+            function getBotResponse(message) {
+                for (let key in botResponses) {
+                    if (message.includes(key)) {
+                        let possibleResponses = botResponses[key];
+                        return Array.isArray(possibleResponses) ? possibleResponses[Math.floor(Math.random() * possibleResponses.length)] : possibleResponses;
+                    }
+                }
+                return "Hmm, I didn’t quite get that. Can you rephrase? 😊";
+            }
+
+            function showTypingIndicator() {
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'typing-indicator';
+                typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+                chatMessages.appendChild(typingIndicator);
+                scrollToBottom();
+
+                setTimeout(() => chatMessages.removeChild(typingIndicator), 1300);
+            }
+
+            function addMessage(text, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${type}`;
+
+                if (type === 'sent') {
+                    messageDiv.innerHTML = `
+                <div class="message-content user-message">
+                    <div class="message-text">${text}</div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                </div>
+            `;
+                } else {
+                    messageDiv.innerHTML = `
+                <div class="message-content bot-message">
+                    <div class="message-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Support Agent">
+                    </div>
+                    <div class="message-body">
+                        <div class="message-name">Sarah</div>
+                        <div class="message-text">${text}</div>
+                        <div class="message-time">${getCurrentTime()}</div>
+                    </div>
+                </div>
+            `;
+                }
+
+                chatMessages.appendChild(messageDiv);
+                scrollToBottom();
+            }
+
+            function getCurrentTime() {
+                const now = new Date();
+                return now.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            function scrollToBottom() {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Event listeners
+            sendMessageBtn.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initLiveChat);
+    </script>
+</body>
+
+</html>

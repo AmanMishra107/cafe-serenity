@@ -1,0 +1,12 @@
+# Node modules (if you use any build tools)
+node_modules/
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+# OS files
+.DS_Store
+Thumbs.db
+# Editor settings
+.vscode/
+.idea/

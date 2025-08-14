@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Serenity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="icon" type="image/png" href="coffee.png">
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-cup">
+                <div class="coffee"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="loading-text">Brewing Experience...</div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Café Serenity</a>
+            <div class="menu-icon" id="menuIcon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link active">Home</a></li>
+                <li><a href="menu.html" class="navbar-link">Menu</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="gallery.html" class="navbar-link">Gallery</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <iframe src="https://skybox.blockadelabs.com/e/34c9b52af75da912f80d9bad6a4160d1" class="hero-bg-iframe" style="border:0;" allow="fullscreen"></iframe>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">WELCOME TO</p>
+            <h1 class="hero-title">Café Serenity</h1>
+            <p class="hero-description">A tranquil oasis in the heart of the city, where exceptional coffee meets artisanal cuisine</p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn btn-primary">Explore Our Menu</a>
+                <a href="contact.html" class="btn btn-secondary">Visit Us</a>
+            </div>
+        </div>
+        <button class="scroll-down" id="scrollDown">
+            
+        <span class="arrow-down"></span>
+  
+    </button>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Café interior">
+                    <div class="about-image-small">
+                        <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Coffee preparation">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">Our Story</h2>
+                    <div class="divider"></div>
+                    <p>Founded in 2016, Café Serenity was born from a passion for bringing people together over a perfect cup of chai and coffee. Inspired by India’s rich tea and coffee culture, we envisioned a warm and inviting space where tradition meets
+                        modern flavors.</p>
+                    <p>What started as a cozy café in the heart of the city soon became a beloved gathering spot, known for its handcrafted beverages, soulful food, and serene ambiance. Despite our growth, we remain committed to authenticity, sustainability,
+                        and creating experiences that feel like home.</p>
+                    <p>Every cup we serve is sourced from India’s finest coffee estates in Chikmagalur and Coorg, and our chai blends pay homage to time-honored recipes. Our food menu celebrates regional flavors, using fresh, locally sourced ingredients
+                        to craft dishes that bring comfort and joy.</p>
+                    <a href="about.html" class="btn btn-tertiary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Promotion Banner Slider -->
+    <section class="interstellar-promo-banner">
+        <div class="cosmic-container">
+            <div class="nebula-slider">
+                <div class="galaxy-slide-container">
+                    <!-- First Promo Banner -->
+                    <div class="supernova-card-wrapper">
+                        <div class="astral-content-grid">
+                            <div class="quantum-text-block">
+                                <h2 class="pulsar-headline">Winter Warmer Collection</h2>
+                                <p class="dark-matter-description">Embrace the season with our limited edition winter warmers. Rich, aromatic, and perfectly spiced for those cold days.</p>
+                                <div class="stellar-promo-tag">Limited Time Only</div>
+                                <a href="menu.html" class="hyperdrive-button">View Collection</a>
+                            </div>
+                            <div class="singularity-image-wrapper">
+                                <img src="https://www.royalcupcoffee.com/sites/default/files/images/blog/AdobeStock_159183621update.jpg" alt="Winter Coffee Collection">
+                                <div class="cosmic-badge">
+                                    <span class="badge-rotation-fix">25% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Promo Banner -->
+                    <div class="supernova-card-wrapper">
+                        <div class="astral-content-grid">
+                            <div class="quantum-text-block">
+                                <h2 class="pulsar-headline">Spring Bloom Specials</h2>
+                                <p class="dark-matter-description">Fresh, floral, and fruity notes celebrate the arrival of spring. Try our new collection of refreshing seasonal beverages.</p>
+                                <div class="stellar-promo-tag">New Arrivals</div>
+                                <a href="menu.html" class="hyperdrive-button">Explore Flavors</a>
+                            </div>
+                            <div class="singularity-image-wrapper">
+                                <img src="https://etimg.etb2bimg.com/photo/113047605.cms" alt="Spring Coffee Collection">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third Promo Banner -->
+                    <div class="supernova-card-wrapper">
+                        <div class="astral-content-grid">
+                            <div class="quantum-text-block">
+                                <h2 class="pulsar-headline">Summer Chill Series</h2>
+                                <p class="dark-matter-description">Beat the heat with our signature cold brews and iced specialties. Perfectly crafted for sunny days and warm evenings.</p>
+                                <div class="stellar-promo-tag">Seasonal Favorite</div>
+                                <a href="menu.html" class="hyperdrive-button">Cool Down</a>
+                            </div>
+                            <div class="singularity-image-wrapper">
+                                <img src="coffee.jpg" alt="Summer Coffee Collection">
+                                <div class="cosmic-badge">
+                                    <span class="badge-rotation-fix">30% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="celestial-controls">
+                    <div class="stellar-indicators">
+                        <div class="stellar-indicator-dot active" data-index="0"></div>
+                        <div class="stellar-indicator-dot" data-index="1"></div>
+                        <div class="stellar-indicator-dot" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Menu Section -->
+    <section class="featured-menu">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Menu</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">Our most popular offerings</p>
+
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.pexels.com/photos/437716/pexels-photo-437716.jpeg" alt="Espresso">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Espresso</h3>
+                            <span class="menu-price">₹250</span>
+                        </div>
+                        <p class="menu-description">Rich, full-bodied espresso with a caramel-like sweetness</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://lorcoffee.com/cdn/shop/articles/Cappuccino-exc.jpg?v=1684870907" alt="Cappuccino">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Cappuccino</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Equal parts espresso, steamed milk, and silky microfoam</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://alegumeaday.com/wp-content/uploads/2024/03/Bean-avocado-toast-3.jpg" alt="Avocado Toast">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Avocado Toast</h3>
+                            <span class="menu-price">₹475</span>
+                        </div>
+                        <p class="menu-description">Sourdough toast with avocado, cherry tomatoes, and microgreens</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://www.cuisinart.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-us-cuisinart-sfra-Library/default/dw2ca0aa66/images/recipe-Images/cafe-latte1-recipe.jpg?sw=1200&sh=630" alt="Latte">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Latte</h3>
+                            <span class="menu-price">₹170</span>
+                        </div>
+                        <p class="menu-description">Smooth espresso with steamed milk and a light layer of foam</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://www.oddbeans.in/cdn/shop/articles/image1_9a1a2488-7d3e-49e6-ae4a-babcc1c17218.jpg?v=1721478108&width=1100" alt="Americano">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Americano</h3>
+                            <span class="menu-price">₹130</span>
+                        </div>
+                        <p class="menu-description">Rich espresso diluted with hot water for a smooth taste</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://www.foodandwine.com/thmb/xQZv2CX6FO5331PYK7uGPF1we9Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Partners-Flat-White-FT-BLOG0523-b11f6273c2d84462954c2163d6a1076d.jpg" alt="Flat White">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Flat White</h3>
+                            <span class="menu-price">₹160</span>
+                        </div>
+                        <p class="menu-description">Velvety espresso combined with steamed milk for a creamy texture</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Croissant">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Butter Croissant</h3>
+                            <span class="menu-price">₹120</span>
+                        </div>
+                        <p class="menu-description">Flaky, buttery pastry with a crispy golden crust</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://ichef.bbc.co.uk/ace/standard/1600/food/recipes/club_sandwich_16496_16x9.jpg.webp" alt="Club Sandwich">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Club Sandwich</h3>
+                            <span class="menu-price">₹250</span>
+                        </div>
+                        <p class="menu-description">Layered sandwich with grilled chicken, lettuce, tomatoes & mayo</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://www.jagranimages.com/images/newimg/khanakhazana/02_2024-french_fries_recipe.webp" alt="French Fries">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">French Fries</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Crispy, golden fries served with tangy ketchup</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center">
+                <a href="menu.html" class="btn btn-primary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Coffee Brewing Countdown -->
+    <section class="brewing-countdown-section">
+        <div class="container">
+            <h2 class="section-title text-center">Perfect Brewing Timer</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle text-center">Every second counts for the perfect cup</p>
+
+            <div class="brewing-countdown">
+                <div class="brewing-method-selector">
+                    <button class="brewing-method active" data-time="180" data-method="French Press">
+            <img src="https://cdn-icons-png.flaticon.com/512/2935/2935416.png" alt="French Press">
+            <span>French Press</span>
+          </button>
+                    <button class="brewing-method" data-time="120" data-method="Pour Over">
+            <img src="https://cdn-icons-png.flaticon.com/512/2935/2935463.png" alt="Pour Over">
+            <span>Pour Over</span>
+          </button>
+                    <button class="brewing-method" data-time="30" data-method="Espresso">
+            <img src="https://cdn-icons-png.flaticon.com/512/2935/2935389.png" alt="Espresso">
+            <span>Espresso</span>
+          </button>
+                    <button class="brewing-method" data-time="240" data-method="Cold Brew">
+            <img src="https://cdn-icons-png.flaticon.com/512/2935/2935402.png" alt="Cold Brew">
+            <span>Cold Brew</span>
+          </button>
+                </div>
+
+                <div class="timer-display">
+                    <div class="timer-circle">
+                        <svg width="200" height="200">
+              <circle class="timer-circle-bg" cx="100" cy="100" r="90" />
+              <circle class="timer-circle-progress" cx="100" cy="100" r="90" />
+            </svg>
+                        <div class="timer-time">
+                            <span id="timerMinutes">03</span>:<span id="timerSeconds">00</span>
+                        </div>
+                        <div class="timer-method" id="timerMethod">French Press</div>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button id="timerStart" class="timer-btn">Start</button>
+                        <button id="timerReset" class="timer-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- NEW SECTION: Interactive Coffee Flavor Wheel -->
+    <section class="flavor-wheel-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal-text">Explore Coffee Flavors</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center fade-in-paragraph">Discover the complex taste notes in our signature blends</p>
+
+            <div class="flavor-wheel-container" data-aos="zoom-in">
+                <div class="flavor-wheel" id="flavorWheel">
+                    <div class="wheel-center">
+                        <span>Our Coffee</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Fruity" style="--rotate: 0deg; --color: #FF6B6B;">
+                        <span>Fruity</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Nutty" style="--rotate: 60deg; --color: #A0522D;">
+                        <span>Nutty</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Chocolatey" style="--rotate: 120deg; --color: #8B4513;">
+                        <span>Chocolatey</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Floral" style="--rotate: 180deg; --color: #FFB6C1;">
+                        <span>Floral</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Spicy" style="--rotate: 240deg; --color: #FF7F50;">
+                        <span>Spicy</span>
+                    </div>
+                    <div class="wheel-segment" data-flavor="Caramel" style="--rotate: 300deg; --color: #DAA520;">
+                        <span>Caramel</span>
+                    </div>
+                </div>
+
+                <div class="flavor-description" id="flavorDescription">
+                    <h3>Select a flavor to learn more</h3>
+                    <p>Click on any segment of the flavor wheel to discover the taste notes and recommended coffee blends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brewing Process Animation -->
+    <section class="brewing-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal-text">Our Brewing Process</h2>
+            <div class="divider center"></div>
+
+            <div class="brewing-animation" data-aos="fade-up">
+                <div class="brewing-items">
+                    <div class="brewing-item active" data-step="1">
+                        <div class="brewing-icon">
+                            <img src="bean.png" alt="Coffee Beans">
+                        </div>
+                        <h3>Select Beans</h3>
+                        <p>We carefully select the finest coffee beans from ethical sources worldwide.</p>
+                    </div>
+                    <div class="brewing-item" data-step="2">
+                        <div class="brewing-icon">
+                            <img src="pngegg.png" alt="Roasting">
+                        </div>
+                        <h3>Roast</h3>
+                        <p>Our master roasters bring out unique flavors through precise roasting techniques.</p>
+                    </div>
+                    <div class="brewing-item" data-step="3">
+                        <div class="brewing-icon">
+                            <img src="pngegg (1).png" alt="Grinding">
+                        </div>
+                        <h3>Grind</h3>
+                        <p>Beans are freshly ground to the perfect consistency for each brewing method.</p>
+                    </div>
+                    <div class="brewing-item" data-step="4">
+                        <div class="brewing-icon">
+                            <img src="brew.png" alt="Brewing">
+                        </div>
+                        <h3>Brew</h3>
+                        <p>Each cup is carefully brewed to perfection by our skilled baristas.</p>
+                    </div>
+                </div>
+                <div class="brewing-display">
+                    <div class="brewing-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="progress-step active" data-step="1"></div>
+                            <div class="progress-step" data-step="2"></div>
+                            <div class="progress-step" data-step="3"></div>
+                            <div class="progress-step" data-step="4"></div>
+                        </div>
+                    </div>
+                    <div class="brewing-visual">
+                        <div class="brewing-visual-item active" data-step="1">
+                            <img src="https://www.fairtrade.org.uk/wp-content/uploads/2023/09/six-facts-about-coffee_Blog-hero-1920x1280-1-1024x683.jpg" alt="Coffee Beans">
+                        </div>
+                        <div class="brewing-visual-item" data-step="2">
+                            <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/AP/WL/GJ/5504430/roasted-coffee-beans.jpg" alt="Roasting">
+                        </div>
+                        <div class="brewing-visual-item" data-step="3">
+                            <img src="https://cdn.shopify.com/s/files/1/0085/9802/8368/t/5/assets/coffee-grinder-1679302263573.jpg?v=1679302264" alt="Grinding">
+                        </div>
+                        <div class="brewing-visual-item" data-step="4">
+                            <img src="https://images.squarespace-cdn.com/content/v1/6128d52a2b39e616dafae73c/1638407113812-47H1TT72MI4OOHT6V65M/french-press.jpeg" alt="Brewing">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Coffee Customizer -->
+    <section class="coffee-customizer-section">
+        <div class="container">
+            <h2 class="section-title text-center">Customize Your Perfect Drink</h2>
+            <p class="section-subtitle text-center">Design your ideal coffee experience</p>
+
+            <div class="customizer-container">
+                <div class="customizer-options">
+                    <div class="customizer-group">
+                        <h3>Base Drink</h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-option="espresso">Espresso</button>
+                            <button class="option-btn" data-option="cappuccino">Cappuccino</button>
+                            <button class="option-btn" data-option="latte">Latte</button>
+                            <button class="option-btn" data-option="americano">Americano</button>
+                        </div>
+                    </div>
+
+                    <div class="customizer-group">
+                        <h3>Milk Options</h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-option="whole">Whole Milk</button>
+                            <button class="option-btn" data-option="almond">Almond</button>
+                            <button class="option-btn" data-option="oat">Oat</button>
+                            <button class="option-btn" data-option="none">No Milk</button>
+                        </div>
+                    </div>
+
+                    <div class="customizer-group">
+                        <h3>Flavor</h3>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-option="vanilla">Vanilla</button>
+                            <button class="option-btn" data-option="caramel">Caramel</button>
+                            <button class="option-btn" data-option="hazelnut">Hazelnut</button>
+                            <button class="option-btn active" data-option="none">None</button>
+                        </div>
+                    </div>
+
+                    <div class="customizer-group">
+                        <h3>Strength</h3>
+                        <div class="strength-slider">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="strengthSlider">
+                            <div class="strength-labels">
+                                <span>Mild</span>
+                                <span>Strong</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customizer-preview">
+                    <div class="coffee-cup">
+                        <div class="cup-body">
+                            <div class="cup-liquid">
+                                <div class="liquid-foam"></div>
+                            </div>
+                        </div>
+                        <div class="cup-handle"></div>
+                        <div class="cup-saucer"></div>
+                    </div>
+
+                    <div class="drink-details">
+                        <h3 id="drinkName">Classic Espresso</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">Calories:</span>
+                            <span class="detail-value" id="drinkCalories">30</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Price:</span>
+                            <span class="detail-value" id="drinkPrice">$3.50</span>
+                        </div>
+                        <p class="drink-description" id="drinkDescription">Our signature espresso is made from freshly ground beans for a rich, full-bodied flavor with notes of chocolate and caramel.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Coffee Membership Program -->
+    <section class="membership-section">
+        <div class="container">
+            <div class="membership-wrapper" data-aos="fade-up">
+                <div class="membership-header">
+                    <h2 class="section-title reveal-text">Join Our Coffee Club</h2>
+                    <div class="divider"></div>
+                    <p class="fade-in-paragraph">Become a member and enjoy exclusive perks, special discounts, and early access to seasonal blends.</p>
+                </div>
+
+                <div class="membership-tiers">
+                    <div class="membership-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
+                        <div class="membership-card-inner">
+                            <div class="membership-card-front">
+                                <h3>Bronze</h3>
+                                <div class="price">₹499<span>/month</span></div>
+                                <ul class="benefits">
+                                    <li>10% off all orders</li>
+                                    <li>Free coffee on birthday</li>
+                                    <li>Newsletter access</li>
+                                </ul>
+                                <button class="flip-card-btn">Learn More</button>
+                            </div>
+                            <div class="membership-card-back">
+                                <h3>Bronze Benefits</h3>
+                                <p>Perfect for casual coffee lovers who want a little extra with their routine coffee fix.</p>
+                                <ul class="detailed-benefits">
+                                    <li>10% discount on all purchases</li>
+                                    <li>Free medium coffee on your birthday</li>
+                                    <li>Monthly newsletter with coffee tips</li>
+                                    <li>Access to member-only events</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="membership-card featured" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="membership-card-inner">
+                            <div class="membership-card-front">
+                                <h3>Silver</h3>
+                                <div class="price">₹999<span>/month</span></div>
+                                <ul class="benefits">
+                                    <li>15% off all orders</li>
+                                    <li>Free coffee weekly</li>
+                                    <li>Priority seating</li>
+                                </ul>
+                                <button class="flip-card-btn">Learn More</button>
+                            </div>
+                            <div class="membership-card-back">
+                                <h3>Silver Benefits</h3>
+                                <p>For coffee enthusiasts who visit us regularly and want to enhance their experience.</p>
+                                <ul class="detailed-benefits">
+                                    <li>15% discount on all purchases</li>
+                                    <li>One free coffee per week</li>
+                                    <li>Priority seating during peak hours</li>
+                                    <li>Monthly coffee tasting sessions</li>
+                                    <li>Exclusive seasonal menu preview</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="membership-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
+                        <div class="membership-card-inner">
+                            <div class="membership-card-front">
+                                <h3>Gold</h3>
+                                <div class="price">₹1499<span>/month</span></div>
+                                <ul class="benefits">
+                                    <li>20% off all orders</li>
+                                    <li>Free coffee daily</li>
+                                    <li>Exclusive events</li>
+                                </ul>
+                                <button class="flip-card-btn">Learn More</button>
+                            </div>
+                            <div class="membership-card-back">
+                                <h3>Gold Benefits</h3>
+                                <p>The ultimate experience for true coffee connoisseurs and our most loyal customers.</p>
+                                <ul class="detailed-benefits">
+                                    <li>20% discount on all purchases</li>
+                                    <li>One free coffee every day</li>
+                                    <li>Exclusive access to limited blends</li>
+                                    <li>Quarterly coffee masterclass</li>
+                                    <li>Personalized coffee profile</li>
+                                    <li>Barista training sessions</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Interactive Seasonal Blend Selector -->
+    <section class="seasonal-blend-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal-text">Customer Favorites</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center fade-in-paragraph">Handpicked by our loyal customers – discover the most loved coffee blends!</p>
+
+
+            <div class="season-tabs" id="seasonTabs" data-aos="fade-up">
+                <button class="season-tab active" data-season="winter">Favorite</button>
+                <button class="season-tab" data-season="spring">Best</button>
+                <button class="season-tab" data-season="summer">Highly Rated</button>
+
+            </div>
+
+            <div class="season-content-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <div class="season-content active" id="winter-content">
+                    <div class="blend-image">
+                        <img src="https://www.internationaldelight.ca/wp-content/uploads/2019/09/recipe-mocha_delight.jpg" alt="Winter Blend">
+                    </div>
+                    <div class="blend-details">
+                        <h3 class="blend-name">Frosted Mocha Delight</h3>
+                        <div class="blend-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="rating-count">(78 reviews)</span>
+                        </div>
+                        <p class="blend-description">A velvety smooth blend with bold espresso, dark chocolate, and a whisper of peppermint. The perfect warm hug for chilly days.</p>
+                        <div class="blend-notes">
+                            <span class="note">Dark Chocolate</span>
+                            <span class="note">Espresso</span>
+                            <span class="note">Peppermint</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="season-content" id="spring-content">
+                    <div class="blend-image">
+                        <img src="https://nucleuscoffee.com/cdn/shop/articles/Latte-recipe.jpg" alt="Spring Blend">
+                    </div>
+                    <div class="blend-details">
+                        <h3 class="blend-name">Latte</h3>
+                        <div class="blend-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">☆</span>
+                            <span class="rating-count">(50 reviews)</span>
+                        </div>
+                        <p class="blend-description">A light, floral-infused coffee with hints of lavender, honey, and vanilla. A refreshing sip to celebrate the season of renewal.</p>
+                        <div class="blend-notes">
+                            <span class="note">Espresso</span>
+                            <span class="note">Steamed Milk</span>
+                            <span class="note">Milk Foam</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="season-content" id="summer-content">
+                    <div class="blend-image">
+                        <img src="https://sumatocoffee.com/cdn/shop/articles/espresso.png?v=1718370919&width=640" alt="Summer Blend">
+                    </div>
+                    <div class="blend-details">
+                        <h3 class="blend-name">Espresso</h3>
+                        <div class="blend-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="rating-count">(165 reviews)</span>
+                        </div>
+                        <p class="blend-description">A smooth, refreshing cold brew with notes of caramel, citrus, and coconut – the ultimate summer pick-me-up.</p>
+                        <div class="blend-notes">
+                            <span class="note">Finely Ground Coffee</span>
+                            <span class="note">Hot Water</span>
+                            <span class="note">Crema</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title text-center">What Our Customers Say</h2>
+            <div class="divider center"></div>
+
+            <div class="testimonials-slider" id="testimonialSlider">
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"The atmosphere is so peaceful, and their house blend is the best coffee I've ever had. I come here to work almost every day!"</p>
+                    <div class="testimonial-author">- Ravi P.</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Their pastries are made fresh daily and you can really taste the difference. The staff is always friendly and remembers my usual order."</p>
+                    <div class="testimonial-author">- Nikita R.</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"This has become my weekend ritual spot. Their menu keeps me coming back to try new things, but their classic cappuccino is my favorite."</p>
+                    <div class="testimonial-author">- Nikhil M.</div>
+                </div>
+            </div>
+
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+
+    <!-- Coffee Flavor Memory Match Game -->
+    <section class="memory-game-section">
+        <div class="container">
+            <h2 class="section-title text-center">Coffee Flavor Memory</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">Got bored!. Test your memory by matching coffee flavor pairs</p>
+
+            <div class="memory-game-container">
+                <div class="memory-game-stats">
+                    <div class="memory-stat">
+                        <span class="memory-label">Moves:</span>
+                        <span class="memory-value" id="moveCount">0</span>
+                    </div>
+                    <div class="memory-stat">
+                        <span class="memory-label">Matches:</span>
+                        <span class="memory-value" id="matchCount">0/8</span>
+                    </div>
+                    <div class="memory-stat">
+                        <span class="memory-label">Time:</span>
+                        <span class="memory-value" id="timeCount">0:00</span>
+                    </div>
+                </div>
+
+                <div class="memory-game-board" id="memoryGameBoard">
+                    <!-- Cards will be dynamically inserted via JavaScript -->
+                </div>
+
+                <div class="memory-game-controls">
+                    <button id="startMemoryGame" class="memory-button">Start New Game</button>
+                    <div class="difficulty-selector">
+                        <span>Difficulty:</span>
+                        <select id="difficultySelect">
+          <option value="easy">Easy (4×4)</option>
+          <option value="medium" selected>Medium (4×4 - Less Time)</option>
+          <option value="hard">Hard (5×4)</option>
+        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed-section">
+        <div class="container">
+            <div class="instagram-header">
+                <div class="instagram-title">
+                    <h2>Follow Our Coffee Journey</h2>
+                    <p>Get inspired by our daily coffee creations and café moments</p>
+                </div>
+                <div class="instagram-profile">
+                    <div class="profile-icon">
+                        <a href="https://www.instagram.com/nexlume" target="_blank">
+                            <img src="https://media.cnn.com/api/v1/images/stellar/prod/150929101049-black-coffee-stock.jpg?q=w_3000,h_3074,x_0,y_0,c_fill" alt="Café Serenity">
+                        </a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">@cafeserenity</div>
+                        <div class="profile-stats">
+                            <span>254 posts</span>
+                            <span>•</span>
+                            <span>3.2k followers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instagram-grid">
+                <div class="instagram-post" data-caption="Our signature latte art - the perfect rosetta leaf to brighten your morning ☕">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Latte Art">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">126 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Our signature latte art - the perfect rosetta leaf to brighten your morning ☕
+                        </div>
+                        <div class="post-time">2 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Fresh pastries coming out of the oven - what's your favorite morning treat? 🥐✨">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1525803377221-4f6ccdaa5133?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Fresh Pastries">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">89 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Fresh pastries coming out of the oven - what's your favorite morning treat? 🥐✨
+                        </div>
+                        <div class="post-time">3 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="The cozy corner everyone's talking about. Perfect for those rainy afternoons with a good book 📚☕">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Cozy Corner">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">215 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> The cozy corner everyone's talking about. Perfect for those rainy afternoons with a good book 📚☕
+                        </div>
+                        <div class="post-time">5 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Behind the scenes: our baristas perfecting their craft. Quality in every cup! ☕👨‍🍳">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Barista at Work">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">143 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Behind the scenes: our baristas perfecting their craft. Quality in every cup! ☕👨‍🍳
+                        </div>
+                        <div class="post-time">1 week ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Just received our fresh shipment of single-origin beans from Ethiopia. Can't wait for you to taste these bright notes! ☕🌍">
+                    <div class="post-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/AP/WL/GJ/5504430/roasted-coffee-beans.jpg" alt="Coffee Beans">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">95 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Just received our fresh shipment of single-origin beans from Ethiopia. Can't wait for you to taste these bright notes! ☕🌍
+                        </div>
+                        <div class="post-time">1 week ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Today's special: our signature avocado toast with microgreens and poached eggs. Available until 2pm! 🥑🍳">
+                    <div class="post-image">
+                        <img src="https://alegumeaday.com/wp-content/uploads/2024/03/Bean-avocado-toast-3.jpg" alt="Avocado Toast">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">172 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Today's special: our signature avocado toast with microgreens and poached eggs. Available until 2pm! 🥑🍳
+                        </div>
+                        <div class="post-time">2 weeks ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instagram-footer">
+                <a href="https://instagram.com/nexlume" target="_blank" class="instagram-follow-btn">
+                    <span class="instagram-icon">
+                    <i class="fab fa-instagram"></i>     Follow on Instagram
+                </span>
+                </a>
+                <div class="instagram-hashtags">
+                    <span class="hashtag">#CaféSerenity</span>
+                    <span class="hashtag">#CoffeeMoments</span>
+                    <span class="hashtag">#BaristaCraft</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-title">Café Serenity</h3>
+                    <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    <p>Phone: (+91) 9834922775</p>
+                    <p>Email:
+                        <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com&su=Café%20Enquiry&body=Hello,%0A%0AI am interested in learning more about your café services. Could you please provide details on the menu, pricing, and any special offers?%0A%0ALooking forward to your response.%0A%0AThank you."
+                            target="_blank" rel="noopener noreferrer" class="gmail-link">
+                            nexlume.co@gmail.com
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-hours">
+                    <h3 class="footer-title">Hours</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 8pm</p>
+                    <p>Sunday: 8am - 6pm</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nexlume" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <p class="newsletter-label">Subscribe to our newsletter:</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" id="newsletterSubmitBtn" class="btn btn-small">Subscribe</button>
+                        <div id="newsletterMessage" style="display: none; margin-top: 10px; font-size: 14px;"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Café Serenity. All rights reserved. | Developed by <a href="https://web-production-8f65.up.railway.app/" target="_blank">NexLume</a></p>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

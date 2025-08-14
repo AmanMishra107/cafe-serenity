@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Café Serenity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="coffee.png">
+    <style>
+        /* Menu Page specific styles */
+        
+        .menu-item-appear {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .menu-item-appear.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .menu-image {
+            overflow: hidden;
+        }
+        
+        .menu-image img {
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-image img {
+            transform: scale(1.15);
+        }
+        
+        .category-tab {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-tab:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--cafe-brown);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .category-tab.active:before,
+        .category-tab:hover:before {
+            left: 0;
+        }
+        
+        .menu-title-row {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-title-row:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cafe-beige);
+            transition: width 0.4s ease;
+        }
+        
+        .menu-item:hover .menu-title-row:after {
+            width: 100%;
+        }
+        
+        .menu-price {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .menu-item:hover .menu-price {
+            transform: scale(1.1);
+            color: var(--cafe-dark);
+        }
+        
+        .dietary-tag {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .dietary-tag:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--cafe-brown);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .dietary-tag:hover {
+            color: var(--white);
+        }
+        
+        .dietary-tag:hover:before {
+            left: 0;
+        }
+        
+        .parallax-bg {
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator span {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .rotating-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--cafe-brown);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transform: rotate(15deg);
+            animation: pulse 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: rotate(15deg) scale(1);
+            }
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(15deg) scale(1);
+            }
+        }
+        
+        .highlight-box {
+            position: relative;
+            padding: 20px;
+            background-color: var(--cafe-light);
+            border-radius: 10px;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        .highlight-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--cafe-brown), var(--cafe-tan), var(--cafe-beige));
+        }
+        
+        .seasonal-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: var(--cafe-brown);
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-cup">
+                <div class="coffee"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="loading-text">Brewing Experience...</div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Café Serenity</a>
+            <div class="menu-icon" id="menuIcon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="menu.html" class="navbar-link active">Menu</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="gallery.html" class="navbar-link">Gallery</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section class="page-header parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070');">
+        <div class="page-header-overlay"></div>
+        <div class="container" data-aos="fade-up">
+            <h1 class="page-title">Our Menu</h1>
+            <div class="divider center light"></div>
+            <p class="page-subtitle">Discover our carefully crafted selection of coffees, teas, and freshly prepared food made with locally sourced ingredients.</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Seasonal Highlight -->
+    <section class="highlight-box">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">Seasonal Special</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">Try our limited-time autumn flavors before they're gone!</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up">
+                    <div class="rotating-badge">NEW</div>
+                    <div class="menu-image">
+                        <img src="https://apumpkinandaprincess.com/wp-content/uploads/2021/09/homemade-PSL-recipe.jpg" alt="Pumpkin Spice Latte">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Pumpkin Spice Latte</h3>
+                            <span class="menu-price">₹350</span>
+                        </div>
+                        <p class="menu-description">Our signature espresso blend with pumpkin spice syrup, steamed milk and topped with whipped cream and cinnamon</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up">
+                    <div class="rotating-badge">HOT</div>
+                    <div class="menu-image">
+                        <img src="https://dinnerthendessert.com/wp-content/uploads/2023/10/Caramel-Macchiato-10.jpg" alt="Caramel Macchiato">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Caramel Macchiato</h3>
+                            <span class="menu-price">₹220</span>
+                        </div>
+                        <p class="menu-description">Rich espresso with vanilla syrup, steamed milk, and a caramel drizzle</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up">
+                    <div class="rotating-badge">BEST</div>
+                    <div class="menu-image">
+                        <img src="https://www.chocolatemoosey.com/wp-content/uploads/2018/11/Mexican-Spiced-Mocha-0079-480x360.jpg" alt="Mexican Mocha">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Mexican Mocha</h3>
+                            <span class="menu-price">₹200</span>
+                        </div>
+                        <p class="menu-description">Espresso blended with chocolate syrup, steamed milk, and topped with whipped cream</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-categories">
+        <div class="container">
+            <ul class="category-tabs" id="menuTabs" data-aos="fade-up">
+                <li class="category-tab active" data-category="coffee">Coffee</li>
+                <li class="category-tab" data-category="tea">Tea</li>
+                <li class="category-tab" data-category="pastries">Pastries</li>
+                <li class="category-tab" data-category="breakfast">Breakfast</li>
+                <li class="category-tab" data-category="lunch">Lunch</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Coffee Menu -->
+    <section class="menu-section active" id="coffee">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Coffee</h2>
+            <div class="divider center" data-aos="scale-in" data-aos-delay="100"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="200">Expertly roasted and prepared with care</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-image">
+                        <img src="https://sumatocoffee.com/cdn/shop/articles/espresso.png?v=1718370919&width=640" alt="Espresso">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Espresso</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Rich, full-bodied espresso with a caramel-like sweetness</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-image">
+                        <img src="https://lorcoffee.com/cdn/shop/articles/Cappuccino-exc.jpg?v=1684870907" alt="Cappuccino">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Cappuccino</h3>
+                            <span class="menu-price">₹180</span>
+                        </div>
+                        <p class="menu-description">Equal parts espresso, steamed milk, and silky microfoam</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="seasonal-badge">Best Seller</div>
+                    <div class="menu-image">
+                        <img src="https://www.cuisinart.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-us-cuisinart-sfra-Library/default/dw2ca0aa66/images/recipe-Images/cafe-latte1-recipe.jpg?sw=1200&sh=630" alt="Latte">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Latte</h3>
+                            <span class="menu-price">₹200</span>
+                        </div>
+                        <p class="menu-description">Espresso with steamed milk and a light layer of foam</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="seasonal-badge">Popular</div>
+                    <div class="menu-image">
+                        <img src="https://www.oddbeans.in/cdn/shop/articles/image1_9a1a2488-7d3e-49e6-ae4a-babcc1c17218.jpg?v=1721478108&width=1100" alt="Americano">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Americano</h3>
+                            <span class="menu-price">₹170</span>
+                        </div>
+                        <p class="menu-description">Espresso diluted with hot water for a drip coffee-like experience</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-image">
+                        <img src="https://www.thespruceeats.com/thmb/POPhcPYBWx7fNJu8Bc7YjS-Flso=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-mocha-4797918-hero-01-1-f8fb7ebd74914895b61366f6fc1d4b05.jpg" alt="Mocha">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Mocha</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">A rich blend of espresso, chocolate, steamed milk, and whipped cream</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-image">
+                        <img src="https://i0.wp.com/melscoffeetravels.com/wp-content/uploads/2023/10/IMG_1565-scaled.jpg?resize=1080%2C675&ssl=1" alt="Cold Brew">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Cold Brew</h3>
+                            <span class="menu-price">₹220</span>
+                        </div>
+                        <p class="menu-description">Slow-steeped coffee served chilled, smooth and refreshing</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- Tea Menu -->
+    <section class="menu-section" id="tea">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Tea</h2>
+            <div class="divider center" data-aos="scale-in" data-aos-delay="100"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="200">Loose leaf teas from around the world</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-image">
+                        <img src="https://shottbeverages.com/wp-content/uploads/2020/07/Earl_Grey_Tea_Infusion.jpg" alt="Earl Grey">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Earl Grey</h3>
+                            <span class="menu-price">₹250</span>
+                        </div>
+                        <p class="menu-description">Black tea flavored with bergamot oil for a citrusy aroma</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="seasonal-badge">Organic</div>
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Green Tea">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Green Tea</h3>
+                            <span class="menu-price">₹130</span>
+                        </div>
+                        <p class="menu-description">Classic Japanese Sencha with a fresh, grassy flavor</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-image">
+                        <img src="https://recipes.wellcurve.in/wp-content/uploads/2022/03/Masala-Tea.jpg" alt="Masala Chai">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Masala Chai</h3>
+                            <span class="menu-price">₹120</span>
+                        </div>
+                        <p class="menu-description">Traditional Indian tea with bold spices, milk, and a rich aroma</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-image">
+                        <img src="https://images.immediate.co.uk/production/volatile/sites/10/2022/02/GettyImages-172937018-846ffa4.jpg?quality=90&fit=700,466" alt="Chamomile Tea">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Chamomile Tea</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Caffeine-free herbal tea with soothing floral and apple notes</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="500">
+                    <div class="seasonal-badge">Premium</div>
+                    <div class="menu-image">
+                        <img src="https://images.healthshots.com/healthshots/hi/uploads/2022/11/28153938/oolong-tea-1600x900.jpg" alt="Oolong Tea">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Oolong Tea</h3>
+                            <span class="menu-price">₹180</span>
+                        </div>
+                        <p class="menu-description">A semi-fermented tea with a smooth, complex, and slightly toasty flavor</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="600">
+                    <div class="menu-image">
+                        <img src="https://www.justonecookbook.com/wp-content/uploads/2022/12/Matcha-Latte-4598-I-1-500x375.jpg" alt="Matcha Tea">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Matcha Tea</h3>
+                            <span class="menu-price">₹220</span>
+                        </div>
+                        <p class="menu-description">Finely ground green tea powder, whisked into a frothy and earthy drink</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastries Menu -->
+    <section class="menu-section" id="pastries">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Pastries</h2>
+            <div class="divider center" data-aos="scale-in" data-aos-delay="100"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="200">Freshly baked in-house daily</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Croissant">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Butter Croissant</h3>
+                            <span class="menu-price">₹75</span>
+                        </div>
+                        <p class="menu-description">Flaky, buttery pastry with a golden-brown exterior</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Blueberry Muffin">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Blueberry Muffin</h3>
+                            <span class="menu-price">₹99</span>
+                        </div>
+                        <p class="menu-description">Tender muffin packed with fresh blueberries and topped with streusel</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-image">
+                        <img src="https://images.getrecipekit.com/v1608585894_13_vjwdhl.jpg?aspect_ratio=16:9&quality=90&auto_optimize=medium" alt="Chocolate Croissant">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Chocolate Croissant</h3>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Flaky, buttery croissant filled with rich, melted chocolate</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-image">
+                        <img src="https://www.allrecipes.com/thmb/gDJ1S6ETLfWGyyWw_4A_IGhvDYE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/9295_red-velvet-cake_ddmfs_4x3_1129-a8ab17b825e3464a9a53ceeda54ff461.jpg" alt="Red Velvet Cake">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Red Velvet Cake</h3>
+                            <span class="menu-price">₹250</span>
+                        </div>
+                        <p class="menu-description">Moist red velvet sponge with smooth cream cheese frosting</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-image">
+                        <img src="https://sugargeekshow.com/wp-content/uploads/2022/11/croissants_featured.jpg" alt="Butter Croissant">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Butter Croissant</h3>
+                            <span class="menu-price">₹130</span>
+                        </div>
+                        <p class="menu-description">Classic French croissant, crisp on the outside, soft inside</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-image">
+                        <img src="https://freshbeanbakery.com/wp-content/uploads/2023/05/Tiramisu-4-500x375.jpg?crop=1" alt="Tiramisu">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Tiramisu</h3>
+                            <span class="menu-price">₹280</span>
+                        </div>
+                        <p class="menu-description">Classic Italian dessert with layers of coffee-soaked sponge and mascarpone</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="500">
+                    <div class="menu-image">
+                        <img src="https://www.thespruceeats.com/thmb/FVgJ6FkRjHenPPYHJgVrnEAHjyo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/strawberry-cheesecake-4588014-03-5a5769c5f121456c8b4aa5c7c6e06f61.jpg" alt="Strawberry Cheesecake">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Strawberry Cheesecake</h3>
+                            <span class="menu-price">₹200</span>
+                        </div>
+                        <p class="menu-description">Creamy cheesecake with a buttery biscuit base and fresh strawberries</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="600">
+                    <div class="menu-image">
+                        <img src="https://www.allrecipes.com/thmb/4BimDpMCAc9DfDez24TX0SUBER4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/6199819-danish-almond-puff-DIZ9829-4x3-1-ea822501c1cd4bb9a78fdb9e20a72163.jpg" alt="Almond Danish">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Almond Danish</h3>
+                            <span class="menu-price">₹180</span>
+                        </div>
+                        <p class="menu-description">Buttery, flaky pastry filled with almond cream and topped with sliced almonds</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="700">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Carrot Cake">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Carrot Cake</h3>
+                            <span class="menu-price">₹220</span>
+                        </div>
+                        <p class="menu-description">Moist spiced cake with shredded carrots, walnuts, and cream cheese frosting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breakfast Menu -->
+    <section class="menu-section" id="breakfast">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Breakfast</h2>
+            <div class="divider center" data-aos="scale-in" data-aos-delay="100"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="200">Served all day</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="seasonal-badge">Best Seller</div>
+                    <div class="menu-image">
+                        <img src="https://alegumeaday.com/wp-content/uploads/2024/03/Bean-avocado-toast-3.jpg" alt="Avocado Toast">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Avocado Toast</h3>
+                            <span class="menu-price">₹475</span>
+                        </div>
+                        <p class="menu-description">Sourdough toast with avocado, cherry tomatoes, and microgreens</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-image">
+                        <img src="https://blog.williams-sonoma.com/wp-content/uploads/2016/12/jan-21-Breakfast-Bowl-with-Fresh-Fruit-and-Granola.jpg" alt="Granola Bowl">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Granola Bowl</h3>
+                            <span class="menu-price">₹550</span>
+                        </div>
+                        <p class="menu-description">House-made granola with Greek yogurt, honey, and seasonal fruit</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-image">
+                        <img src="https://images.101cookbooks.com/FLUFFY-PANCAKE-RECIPE-H.jpg?w=1200&auto=compress&auto=format" alt="Fluffy Pancakes">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Fluffy Pancakes</h3>
+                            <span class="menu-price">₹480</span>
+                        </div>
+                        <p class="menu-description">Stack of soft pancakes served with maple syrup and fresh berries</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH7iqq1h9BQabL7Z5T6Z8bQvAIFxWA_PMJcw&s" alt="Cheese Omelette">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Cheese Omelette</h3>
+                            <span class="menu-price">₹420</span>
+                        </div>
+                        <p class="menu-description">Three-egg omelette with melted cheese, mushrooms, and fresh herbs</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="500">
+                    <div class="menu-image">
+                        <img src="https://www.garnishandglaze.com/wp-content/uploads/2017/01/nuts-about-berries-smoothie-bowl-6.jpg" alt="Berry Smoothie Bowl">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Berry Smoothie Bowl</h3>
+                            <span class="menu-price">₹520</span>
+                        </div>
+                        <p class="menu-description">Refreshing smoothie bowl topped with banana, chia seeds, and granola</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="600">
+                    <div class="menu-image">
+                        <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/avocado-6b1cf76.jpg?quality=90&resize=440,400" alt="Poached Eggs & Toast">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Poached Eggs & Toast</h3>
+                            <span class="menu-price">₹480</span>
+                        </div>
+                        <p class="menu-description">Perfectly poached eggs served with multigrain toast and butter</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lunch Menu -->
+    <section class="menu-section" id="lunch">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Lunch</h2>
+            <div class="divider center" data-aos="scale-in" data-aos-delay="100"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="200">Available from 11am to 3pm</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-image">
+                        <img src="https://cdn.loveandlemons.com/wp-content/uploads/2020/06/caprese-sandwich.jpg" alt="Caprese Sandwich">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Caprese Sandwich</h3>
+                            <span class="menu-price">₹675</span>
+                        </div>
+                        <p class="menu-description">Fresh mozzarella, tomato, basil, and balsamic glaze on ciabatta</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1547496502-affa22d38842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Quinoa Salad">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Quinoa Salad</h3>
+                            <span class="menu-price">₹550</span>
+                        </div>
+                        <p class="menu-description">Quinoa, roasted vegetables, avocado, and lemon vinaigrette</p>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-image">
+                        <img src="https://www.breathlesswines.com/assets/images/recipes/picture/veggiewrap.jpg" alt="Grilled Veggie Wrap">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Grilled Veggie Wrap</h3>
+                            <span class="menu-price">₹450</span>
+                        </div>
+                        <p class="menu-description">Grilled bell peppers, zucchini, and hummus wrapped in a whole wheat tortilla</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-image">
+                        <img src="https://themom100.com/wp-content/uploads/2024/04/classic-club-sandwich-150922-H.jpg" alt="Classic Club Sandwich">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Classic Club Sandwich</h3>
+                            <span class="menu-price">₹520</span>
+                        </div>
+                        <p class="menu-description">Triple-layer sandwich with grilled chicken, egg, lettuce, and mayo</p>
+                    </div>
+                </div>
+
+                <div class="menu-item menu-item-appear" data-aos="fade-up" data-aos-delay="500">
+                    <div class="menu-image">
+                        <img src="https://www.connoisseurusveg.com/wp-content/uploads/2023/02/vegan-pasta-primavera-23-sq-500x500.jpg" alt="Pasta Primavera">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">Pasta Primavera</h3>
+                            <span class="menu-price">₹580</span>
+                        </div>
+                        <p class="menu-description">Penne pasta tossed with fresh vegetables and a light olive oil sauce</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Parallax Break -->
+    <section class="parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=2070'); height: 300px; position: relative;">
+        <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.4);"></div>
+        <div class="container" style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <h2 style="color: white; text-align: center; font-size: 2.5rem; font-weight: 300;" data-aos="fade-up">
+                "Coffee is a language in itself."
+            </h2>
+        </div>
+    </section>
+
+    <!-- Dietary Info -->
+    <section class="dietary-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Special Dietary Needs</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">We understand that many of our customers have specific dietary requirements. Our menu can be adapted for the following needs:</p>
+
+            <div class="dietary-tags" data-aos="fade-up" data-aos-delay="200">
+                <span class="dietary-tag">Vegetarian</span>
+                <span class="dietary-tag">Vegan</span>
+                <span class="dietary-tag">Gluten-Free</span>
+                <span class="dietary-tag">Dairy-Free</span>
+                <span class="dietary-tag">Nut-Free</span>
+            </div>
+
+            <p class="dietary-note text-center" data-aos="fade-up" data-aos-delay="300">Please inform our staff about any allergies or dietary restrictions when ordering. We're happy to accommodate your needs!</p>
+        </div>
+    </section>
+    <!-- Interactive Recipe Finder -->
+    <section class="recipe-finder">
+        <div class="container">
+            <h2 class="section-title text-center">Find Your Perfect Pairing</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">What goes best with your favorite coffee?</p>
+
+            <div class="recipe-matcher">
+                <div class="coffee-selector">
+                    <h3>Select Your Coffee</h3>
+                    <div class="coffee-options">
+                        <div class="coffee-option" data-coffee="espresso">
+                            <div class="option-image">
+                                <img src="https://aeropress.com/cdn/shop/articles/Espresso-cup-with-coffee-beans_600x.jpg?v=1681501296" alt="Espresso">
+                            </div>
+                            <span class="option-name">Espresso</span>
+                        </div>
+                        <div class="coffee-option" data-coffee="cappuccino">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Cappuccino">
+                            </div>
+                            <span class="option-name">Cappuccino</span>
+                        </div>
+                        <div class="coffee-option" data-coffee="latte">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Latte">
+                            </div>
+                            <span class="option-name">Latte</span>
+                        </div>
+                        <div class="coffee-option" data-coffee="macchiato">
+                            <div class="option-image">
+                                <img src="https://i0.wp.com/www.teacoffeecup.com/wp-content/uploads/2020/08/classic-macchiato-espresso.jpg?fit=550%2C367&ssl=1" alt="macchiato">
+                            </div>
+                            <span class="option-name">Macchiato</span>
+                        </div>
+                        <div class="coffee-option" data-coffee="mocha">
+                            <div class="option-image">
+                                <img src="https://images.immediate.co.uk/production/volatile/sites/2/2021/11/Mocha-1fc71f7.png?resize=1200%2C630" alt="Mocha">
+                            </div>
+                            <span class="option-name">Mocha</span>
+                        </div>
+                        <div class="coffee-option" data-coffee="flat_white">
+                            <div class="option-image">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flat_white.jpg/2560px-Flat_white.jpg" alt="flat_white">
+                            </div>
+                            <span class="option-name">Flat_white</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pairing-results">
+                    <h3>Perfect Pairings</h3>
+                    <div class="pairing-placeholder" id="pairingPlaceholder">
+                        <p>Select a coffee to see recommended pairings</p>
+                    </div>
+                    <div class="pairing-items" id="pairingItems"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Interactive Coffee Quiz -->
+    <section class="coffee-quiz-section">
+        <div class="container">
+            <h2 class="section-title text-center">Discover Your Coffee Personality</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">Find your perfect brew with our interactive quiz</p>
+
+            <div class="quiz-container" id="coffeeQuiz">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="question-counter">Question <span id="currentQuestion">1</span>/5</div>
+                </div>
+
+                <div class="quiz-questions">
+                    <div class="question active" data-question="1">
+                        <h3>How do you prefer your coffee?</h3>
+                        <div class="options">
+                            <div class="option" data-points="espresso">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1551030173-122aabc4489c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Strong and Bold">
+                                </div>
+                                <span>Strong and Bold</span>
+                            </div>
+                            <div class="option" data-points="latte">
+                                <div class="option-image">
+                                    <img src="https://images.slurrp.com/prodrich_article/yzih3qtrte.webp?impolicy=slurrp-20210601&width=880&height=500" alt="Creamy and Smooth">
+                                </div>
+                                <span>Creamy and Smooth</span>
+                            </div>
+                            <div class="option" data-points="pour-over">
+                                <div class="option-image">
+                                    <img src="https://cdn.shopify.com/s/files/1/0644/7199/0455/files/Banner_06.jpg?v=1737702142" alt="Balanced and Aromatic">
+                                </div>
+                                <span>Balanced and Aromatic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="2">
+                        <h3>When do you typically enjoy coffee?</h3>
+                        <div class="options">
+                            <div class="option" data-points="espresso">
+                                <div class="option-image">
+                                    <img src="https://media.istockphoto.com/id/518593585/photo/cup-of-coffee.jpg?s=612x612&w=0&k=20&c=TyosoZUHEeE48CbEWKoL4ff4PS1ebcy8j0HnRWieGXQ=" alt="Early Morning">
+                                </div>
+                                <span>Early Morning</span>
+                            </div>
+                            <div class="option" data-points="latte">
+                                <div class="option-image">
+                                    <img src="https://files.schudio.com/stbernadette/images/news/coffeeAfternoon.jpeg" alt="Afternoon Break">
+                                </div>
+                                <span>Afternoon Break</span>
+                            </div>
+                            <div class="option" data-points="pour-over">
+                                <div class="option-image">
+                                    <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2020/03/man-drinking-coffee.jpg?quality=82&strip=1" alt="Throughout the Day">
+                                </div>
+                                <span>Throughout the Day</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="3">
+                        <h3>What flavors do you enjoy most?</h3>
+                        <div class="options">
+                            <div class="option" data-points="espresso">
+                                <div class="option-image">
+                                    <img src="https://gatherforbread.com/wp-content/uploads/2014/10/Dark-Chocolate-Mocha-1-683x1024.jpg" alt="Rich and Chocolatey">
+                                </div>
+                                <span>Rich and Chocolatey</span>
+                            </div>
+                            <div class="option" data-points="latte">
+                                <div class="option-image">
+                                    <img src="https://www.seriouseats.com/thmb/dwKjOOPQu1ki3pSf1M4eB7FGVzI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20240206-SEA-Coffee-Smoothie-hero-27d1864a41cc411ea7ff0c64ada77a2e.jpg" alt="Sweet and Nutty">
+                                </div>
+                                <span>Sweet and Nutty</span>
+                            </div>
+                            <div class="option" data-points="pour-over">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1476097297040-79e9e1603142?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Fruity and Floral">
+                                </div>
+                                <span>Fruity and Floral</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="4">
+                        <h3>Your ideal coffee environment is:</h3>
+                        <div class="options">
+                            <div class="option" data-points="espresso">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Bustling City Café">
+                                </div>
+                                <span>Bustling City Café</span>
+                            </div>
+                            <div class="option" data-points="latte">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Cozy Corner with Friends">
+                                </div>
+                                <span>Cozy Corner with Friends</span>
+                            </div>
+                            <div class="option" data-points="pour-over">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Quiet Spot with a Book">
+                                </div>
+                                <span>Quiet Spot with a Book</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="5">
+                        <h3>How do you feel after drinking coffee?</h3>
+                        <div class="options">
+                            <div class="option" data-points="espresso">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Energized and Ready to Go">
+                                </div>
+                                <span>Energized and Ready to Go</span>
+                            </div>
+                            <div class="option" data-points="latte">
+                                <div class="option-image">
+                                    <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Content and Comforted">
+                                </div>
+                                <span>Content and Comforted</span>
+                            </div>
+                            <div class="option" data-points="pour-over">
+                                <div class="option-image">
+                                    <img src="https://imageio.forbes.com/specials-images/imageserve/64ec76a5c9a45be7313b061a/Attractive-man-in-glasses-working-with-multiple-electronic-internet-devices-/0x0.jpg?format=jpg&crop=4129,2321,x0,y68,safe&width=960" alt="Focused and Thoughtful">
+                                </div>
+                                <span>Focused and Thoughtful</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-results">
+                        <h3>Your Coffee Personality:</h3>
+                        <div class="result-type" id="resultType">Discovering...</div>
+                        <div class="result-image" id="resultImage"></div>
+                        <p class="result-description" id="resultDescription"></p>
+                        <div class="recommendation">
+                            <h4>We Recommend:</h4>
+                            <p id="resultRecommendation"></p>
+                        </div>
+                        <button id="restartQuiz" class="restart-btn">Take Quiz Again</button>
+
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prevButton" class="nav-btn" disabled>Previous</button>
+                    <button id="nextButton" class="nav-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-title">Café Serenity</h3>
+                    <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    <p>Phone: (+91) 9834922775</p>
+                    <p>Email:
+                        <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com&su=Café%20Enquiry&body=Hello,%0A%0AI am interested in learning more about your café services. Could you please provide details on the menu, pricing, and any special offers?%0A%0ALooking forward to your response.%0A%0AThank you."
+                            target="_blank" rel="noopener noreferrer" class="gmail-link">
+                            nexlume.co@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+                <div class="footer-hours">
+                    <h3 class="footer-title">Hours</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 8pm</p>
+                    <p>Sunday: 8am - 6pm</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nexlume" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <p class="newsletter-label">Subscribe to our newsletter:</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" id="newsletterSubmitBtn" class="btn btn-small">Subscribe</button>
+                        <div id="newsletterMessage" style="display: none; margin-top: 10px; font-size: 14px;"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Café Serenity. All rights reserved. | Developed by <a href="https://web-production-8f65.up.railway.app/" target="_blank">NexLume</a></p>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false
+        });
+
+        // Menu tabs functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuTabs = document.querySelectorAll('.category-tab');
+            const menuSections = document.querySelectorAll('.menu-section');
+
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Get active tab
+                    const category = tab.getAttribute('data-category');
+
+                    // Remove active class from all tabs and add to clicked tab
+                    menuTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // Hide all menu sections
+                    menuSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Show selected menu section
+                    document.getElementById(category).classList.add('active');
+
+                    // Reset animations for the new active section
+                    AOS.refresh();
+
+                    // Add appear animation to menu items with delay
+                    const menuItems = document.querySelectorAll(`#${category} .menu-item-appear`);
+
+                    menuItems.forEach((item, index) => {
+                        // Reset animations first
+                        item.classList.remove('active');
+
+                        // Trigger reflow
+                        void item.offsetWidth;
+
+                        // Add animations with staggered delay
+                        setTimeout(() => {
+                            item.classList.add('active');
+                        }, 100 * index);
+                    });
+                });
+            });
+
+            // Initial animation for the active section's menu items
+            const initialMenuItems = document.querySelectorAll('#coffee .menu-item-appear');
+            initialMenuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, 500 + (100 * index)); // Adding 500ms initial delay
+            });
+
+            // Parallax scrolling effect
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax-bg');
+
+                parallaxElements.forEach(element => {
+                    const speed = 0.5; // Adjust for faster/slower parallax
+                    const yPos = -(scrollPosition * speed);
+                    element.style.backgroundPosition = `center ${yPos}px`;
+                });
+            });
+
+            // Smooth scroll for the scroll indicator
+            document.querySelector('.scroll-indicator').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

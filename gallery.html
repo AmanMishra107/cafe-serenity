@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Café Serenity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="coffee.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-cup">
+                <div class="coffee"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="loading-text">Brewing Experience...</div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Café Serenity</a>
+            <div class="menu-icon" id="menuIcon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="menu.html" class="navbar-link">Menu</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="gallery.html" class="navbar-link active">Gallery</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3');">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <h1 class="page-title">Gallery</h1>
+            <div class="divider center light"></div>
+            <p class="page-subtitle">A visual journey through our café atmosphere, delicious offerings, and special moments.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="gallery-filter active" data-filter="all">All</button>
+                <button class="gallery-filter" data-filter="cafe">Café</button>
+                <button class="gallery-filter" data-filter="food">Food</button>
+                <button class="gallery-filter" data-filter="coffee">Coffee</button>
+                <button class="gallery-filter" data-filter="events">Events</button>
+            </div>
+
+            <div class="gallery-grid-masonry" id="galleryGrid">
+                <div class="gallery-item" data-category="cafe">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Café interior">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Our cozy interior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item tall" data-category="coffee">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Coffee preparation">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Brewing perfection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="food">
+                    <div class="gallery-image-container">
+                        <img src="https://static.thedaringkitchen.com/wp-content/uploads/2021/06/Carrot-bacon-avocado-toast-14-scaled.jpg" alt="Avocado Toast">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Avocado toast with microgreens</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide" data-category="coffee">
+                    <div class="gallery-image-container">
+                        <img src="https://cuplacoffee.com/wp-content/uploads/2024/04/science-of-espresso-featured.jpg" alt="Espresso">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Perfect espresso shot</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="kitchen">
+                    <div class="gallery-image-container">
+                        <img src="https://acfitouts.com.au/wp-content/uploads/2021/05/kitchen-cafe-cooking-homemade-making-food-architecture-1024x682.jpg" alt="Coffee tasting event">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Our kitchen</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide-tall" data-category="cafe">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Café patio">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Our peaceful patio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item tall" data-category="food">
+                    <div class="gallery-image-container">
+                        <img src="https://bakerbynature.com/wp-content/uploads/2011/05/Blueberry-Muffins-1-of-1.jpg" alt="Blueberry Muffin">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Fresh blueberry muffins</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide" data-category="events">
+                    <div class="gallery-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/582ad1726b8f5b41b55c2dc7/2c2da914-4884-4601-b871-8c37184eb644/live-music-places-pubs-bars-in-bath.png" alt="Music night">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Friday night live music</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="food">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Croissants">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Freshly baked croissants</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="coffee">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Latte art">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Beautiful latte art</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide" data-category="cafe">
+                    <div class="gallery-image-container">
+                        <img src="https://cdn.shopify.com/s/files/1/0530/5145/7703/files/Commodity_Vs_Premium_Coffee.png?v=1626944878" alt="Coffee beans">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Our premium coffee selection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item tall" data-category="coffee">
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Espresso shot">
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Authentic Masala Chai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed-section">
+        <div class="container">
+            <div class="instagram-header">
+                <div class="instagram-title">
+                    <h2>Follow Our Coffee Journey</h2>
+                    <p>Get inspired by our daily coffee creations and café moments</p>
+                </div>
+                <div class="instagram-profile">
+                    <div class="profile-icon">
+                        <a href="https://www.instagram.com/nexlume" target="_blank">
+                            <img src="https://media.cnn.com/api/v1/images/stellar/prod/150929101049-black-coffee-stock.jpg?q=w_3000,h_3074,x_0,y_0,c_fill" alt="Café Serenity">
+                        </a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">@cafeserenity</div>
+                        <div class="profile-stats">
+                            <span>254 posts</span>
+                            <span>•</span>
+                            <span>3.2k followers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instagram-grid">
+                <div class="instagram-post" data-caption="Our signature latte art - the perfect rosetta leaf to brighten your morning ☕">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Latte Art">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">126 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Our signature latte art - the perfect rosetta leaf to brighten your morning ☕
+                        </div>
+                        <div class="post-time">2 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Fresh pastries coming out of the oven - what's your favorite morning treat? 🥐✨">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1525803377221-4f6ccdaa5133?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Fresh Pastries">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">89 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Fresh pastries coming out of the oven - what's your favorite morning treat? 🥐✨
+                        </div>
+                        <div class="post-time">3 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="The cozy corner everyone's talking about. Perfect for those rainy afternoons with a good book 📚☕">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Cozy Corner">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">215 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> The cozy corner everyone's talking about. Perfect for those rainy afternoons with a good book 📚☕
+                        </div>
+                        <div class="post-time">5 days ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Behind the scenes: our baristas perfecting their craft. Quality in every cup! ☕👨‍🍳">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Barista at Work">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">143 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Behind the scenes: our baristas perfecting their craft. Quality in every cup! ☕👨‍🍳
+                        </div>
+                        <div class="post-time">1 week ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Just received our fresh shipment of single-origin beans from Ethiopia. Can't wait for you to taste these bright notes! ☕🌍">
+                    <div class="post-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/AP/WL/GJ/5504430/roasted-coffee-beans.jpg" alt="Coffee Beans">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">95 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Just received our fresh shipment of single-origin beans from Ethiopia. Can't wait for you to taste these bright notes! ☕🌍
+                        </div>
+                        <div class="post-time">1 week ago</div>
+                    </div>
+                </div>
+
+                <div class="instagram-post" data-caption="Today's special: our signature avocado toast with microgreens and poached eggs. Available until 2pm! 🥑🍳">
+                    <div class="post-image">
+                        <img src="https://alegumeaday.com/wp-content/uploads/2024/03/Bean-avocado-toast-3.jpg" alt="Avocado Toast">
+                        <div class="post-overlay">
+                            <div class="post-icons">
+                                <span class="post-icon heart">♥</span>
+                                <span class="post-icon comment">💬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <div class="post-likes">172 likes</div>
+                        <div class="post-caption">
+                            <span class="post-username">cafeserenity</span> Today's special: our signature avocado toast with microgreens and poached eggs. Available until 2pm! 🥑🍳
+                        </div>
+                        <div class="post-time">2 weeks ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instagram-footer">
+                <a href="https://instagram.com/nexlume" target="_blank" class="instagram-follow-btn">
+                    <span class="instagram-icon">
+                        <i class="fab fa-instagram"></i>     Follow on Instagram
+                    </span>
+                </a>
+                <div class="instagram-hashtags">
+                    <span class="hashtag">#CaféSerenity</span>
+                    <span class="hashtag">#CoffeeMoments</span>
+                    <span class="hashtag">#BaristaCraft</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-title">Café Serenity</h3>
+                    <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    <p>Phone: (+91) 9834922775</p>
+                    <p>Email:
+                        <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com&su=Café%20Enquiry&body=Hello,%0A%0AI am interested in learning more about your café services. Could you please provide details on the menu, pricing, and any special offers?%0A%0ALooking forward to your response.%0A%0AThank you."
+                            target="_blank" rel="noopener noreferrer" class="gmail-link">
+                            nexlume.co@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+                <div class="footer-hours">
+                    <h3 class="footer-title">Hours</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 8pm</p>
+                    <p>Sunday: 8am - 6pm</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nexlume" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <p class="newsletter-label">Subscribe to our newsletter:</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" id="newsletterSubmitBtn" class="btn btn-small">Subscribe</button>
+                        <div id="newsletterMessage" style="display: none; margin-top: 10px; font-size: 14px;"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Café Serenity. All rights reserved. | Developed by <a href="https://web-production-8f65.up.railway.app/" target="_blank">NexLume </a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

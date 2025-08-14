@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Café Serenity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="coffee.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-cup">
+                <div class="coffee"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="loading-text">Brewing Experience...</div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Café Serenity</a>
+            <div class="menu-icon" id="menuIcon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="menu.html" class="navbar-link">Menu</a></li>
+                <li><a href="about.html" class="navbar-link active">About</a></li>
+                <li><a href="gallery.html" class="navbar-link">Gallery</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3');">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <h1 class="page-title">About Us</h1>
+            <div class="divider center light"></div>
+            <p class="page-subtitle">Learn more about our story, our values, and the people who make Café Serenity special.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="about-section full">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Café interior">
+                    <div class="about-image-small">
+                        <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Coffee preparation">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">About Us</h2>
+                    <div class="divider"></div>
+                    <p>On a quiet autumn morning in 2016, Café Serenity was born—a cozy escape from the city's rush, where conversations flourished over handcrafted coffee. What started as a small corner café soon became a beloved gathering place, built
+                        on passion, quality, and the magic of shared experiences.</p>
+                    <p>At the heart of Café Serenity is our dedicated team: Aman Mishra, our visionary head, Sanath Shetty, our executive, and Ravi Patil, our manager, ensuring everything runs smoothly. Alongside our talented kitchen and service staff, they
+                        bring warmth and care to every cup and every dish.</p>
+                    <p>We take pride in ethically sourced coffee, roasted in small batches for peak flavor, and a menu crafted with fresh, local ingredients. More than a café, Café Serenity is a place where time slows, and every visit feels like coming home.</p>
+                </div>
+                <div class="coffee-counter">
+                    <div class="counter-item" data-count="3650">
+                        <span class="counter-number">0</span>
+                        <span class="counter-label">Days Serving</span>
+                    </div>
+                    <div class="counter-item" data-count="25000">
+                        <span class="counter-number">0</span>
+                        <span class="counter-label">Happy Customers</span>
+                    </div>
+                    <div class="counter-item" data-count="15">
+                        <span class="counter-number">0</span>
+                        <span class="counter-label">Coffee Varieties</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title text-center">Our Values</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">The principles that guide everything we do at Café Serenity.</p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">☕</div>
+                    <h3 class="value-title">Quality</h3>
+                    <p class="value-description">We never compromise on quality. From our carefully sourced beans to our house-made pastries, we believe in providing the best for our customers.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Sustainability</h3>
+                    <p class="value-description">We're committed to environmentally responsible practices, from ethically sourced ingredients to eco-friendly packaging and waste reduction.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3 class="value-title">Community</h3>
+                    <p class="value-description">We believe in creating connections. Our café is designed to be a welcoming space for gathering, conversation, and building community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section with Hover Effects -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Meet Our Team</h2>
+            <div class="divider center" data-aos="zoom-in" data-aos-delay="200"></div>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="300">The heart and soul of Café Serenity is our dedicated team of coffee enthusiasts, culinary artists, and friendly staff who make every visit special.</p>
+
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member-image">
+                        <img src="https://web-production-8f65.up.railway.app/media/images/team/misra.jpg" alt="Alex Morgan">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="https://www.linkedin.com/in/amanmishra107/" target="_blank" class="social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/aman.mishra__107" target="_blank" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Aman Mishra</h3>
+                    <p class="team-member-role">Founder & Head </p>
+                    <p class="team-member-bio">With over 15 years of experience in specialty coffee, Aman brings passion and expertise to every cup.</p>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member-image">
+                        <img src="https://web-production-8f65.up.railway.app/media/images/team/anna.jpg" alt="Jamie Chen">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/_sanath_shetty_29_" target="_blank" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Sanath Shetty</h3>
+                    <p class="team-member-role">Executive Chef</p>
+                    <p class="team-member-bio">Sanath creates seasonal menus that highlight local ingredients and complement our coffee offerings.</p>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-member-image">
+                        <img src="https://web-production-8f65.up.railway.app/media/images/team/ravi_jL7c2el.jpg" alt="Taylor Reed">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="https://www.linkedin.com/in/sanath-shetty-979b4526b/" target="_blank" class="social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/ravi_patil573" target="_blank" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Ravindra Patil</h3>
+                    <p class="team-member-role">Pastry Chef</p>
+                    <p class="team-member-bio">Ravindra ensures smooth operations, excellent service, and a welcoming atmosphere at our café.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title text-center">Our Journey</h2>
+            <div class="divider center"></div>
+            <p class="section-subtitle text-center">From a small corner shop to a beloved community destination.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-year">2016</h3>
+                        <h4 class="timeline-title">The Beginning</h4>
+                        <p class="timeline-description">Café Serenity opened its doors as a small corner shop with just three tables and a passion for great coffee.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-year">2019</h3>
+                        <h4 class="timeline-title">Expansion</h4>
+                        <p class="timeline-description">We expanded to our current location, adding a full kitchen and doubling our seating capacity.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-year">2020-21</h3>
+                        <h4 class="timeline-title">COVID-19 Pandemic</h4>
+                        <p class="timeline-description">The global pandemic impacted businesses worldwide. We adapted by implementing safety protocols, offering contactless delivery, and supporting our community during tough times.</p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-year">2023</h3>
+                        <h4 class="timeline-title">Sustainability Focus</h4>
+                        <p class="timeline-description">We implemented comprehensive sustainability practices, from compostable packaging to solar panels on our roof.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-year">2025</h3>
+                        <h4 class="timeline-title">Milestone Achievement</h4>
+                        <p class="timeline-description">We celebrated a record-breaking year, expanding to new locations, reaching more coffee lovers, and strengthening our community presence with innovation and excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Interactive Coffee Beans Section -->
+    <section class="beans-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Coffee Bean Origins</h2>
+            <div class="divider center" data-aos="zoom-in" data-aos-delay="200"></div>
+
+
+            <div class="beans-map-container" data-aos="zoom-in" data-aos-delay="300">
+                <div class="world-map">
+                    <!-- South America -->
+                    <div class="map-point" style="top: 65%; left: 25%;" data-origin="Colombia">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Colombia</h4>
+                            <p>Sweet, medium body with caramel notes</p>
+                        </div>
+                    </div>
+                    <div class="map-point" style="top: 70%; left: 30%;" data-origin="Brazil">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Brazil</h4>
+                            <p>Nutty, chocolatey with low acidity</p>
+                        </div>
+                    </div>
+
+                    <!-- Africa -->
+                    <div class="map-point" style="top: 50%; left: 55%;" data-origin="Ethiopia">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Ethiopia</h4>
+                            <p>Floral and fruity with wine-like acidity</p>
+                        </div>
+                    </div>
+                    <div class="map-point" style="top: 52%; left: 58%;" data-origin="Kenya">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Kenya</h4>
+                            <p>Bright acidity with berry flavors</p>
+                        </div>
+                    </div>
+
+                    <!-- Asia -->
+                    <div class="map-point" style="top: 58%; left: 81%;" data-origin="Indonesia">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Indonesia</h4>
+                            <p>Earthy, full body with chocolate notes</p>
+                        </div>
+                    </div>
+                    <div class="map-point" style="top: 49%; left: 82%;" data-origin="Vietnam">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Vietnam</h4>
+                            <p>Bold, dark roast with smoky notes</p>
+                        </div>
+                    </div>
+
+                    <!-- Central America -->
+                    <div class="map-point" style="top: 50%; left: 20%;" data-origin="Costa Rica">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Costa Rica</h4>
+                            <p>Bright, honeyed sweetness</p>
+                        </div>
+                    </div>
+                    <!-- Caribbean -->
+                    <div class="map-point" style="top: 52%; left: 18%;" data-origin="Jamaica">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Jamaica</h4>
+                            <p>Rich, mild with a smooth finish</p>
+                        </div>
+                    </div>
+
+                    <div class="map-point" style="top: 50%; left: 73%;" data-origin="India">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>India</h4>
+                            <p>Spicy, full-bodied with subtle chocolate hints</p>
+                        </div>
+                    </div>
+
+
+                    <div class="map-point" style="top: 50%; left: 45%;" data-origin="Tanzania">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Tanzania</h4>
+                            <p>Bright, citrusy with wine-like acidity</p>
+                        </div>
+                    </div>
+
+                    <div class="map-point" style="top: 52%; left: 44%;" data-origin="Rwanda">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Rwanda</h4>
+                            <p>Tea-like body with floral and citrus notes</p>
+                        </div>
+                    </div>
+
+                    <!-- Caribbean -->
+                    <div class="map-point" style="top: 52%; left: 18%;" data-origin="Jamaica">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Jamaica</h4>
+                            <p>Rich, mild with a smooth finish</p>
+                        </div>
+                    </div>
+
+                    <div class="map-point" style="top: 53%; left: 17%;" data-origin="Dominican Republic">
+                        <div class="point-pulse"></div>
+                        <div class="origin-info">
+                            <h4>Dominican Republic</h4>
+                            <p>Mellow, well-balanced with a nutty finish</p>
+                        </div>
+                    </div>
+                    <img src="https://cdn.pixabay.com/photo/2013/07/12/12/54/world-map-146505_1280.png" alt="World Map" class="map-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Coffee Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Our Coffee Process</h2>
+            <div class="divider center" data-aos="zoom-in" data-aos-delay="200"></div>
+
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Bean Selection</h3>
+                        <p>We carefully select the finest beans from sustainable farms worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Roasting</h3>
+                        <p>Our master roasters bring out the unique characteristics of each origin.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Brewing</h3>
+                        <p>Our baristas are trained in various brewing methods to perfect every cup.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="700">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Serving</h3>
+                        <p>We present each cup at its ideal temperature, bringing you the perfect coffee experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3 class="footer-title">Café Serenity</h3>
+                    <p>123 Coffee Street<br>Vashi, Navi-Mumbai Maharashtra 400703</p>
+                    <p>Phone: (+91) 9834922775</p>
+                    <p>Email:
+                        <a href="https://mail.google.com/mail/?view=cm&to=nexlume.co@gmail.com&su=Café%20Enquiry&body=Hello,%0A%0AI am interested in learning more about your café services. Could you please provide details on the menu, pricing, and any special offers?%0A%0ALooking forward to your response.%0A%0AThank you."
+                            target="_blank" rel="noopener noreferrer" class="gmail-link">
+                            nexlume.co@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+                <div class="footer-hours">
+                    <h3 class="footer-title">Hours</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 8pm</p>
+                    <p>Sunday: 8am - 6pm</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nexlume" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <p class="newsletter-label">Subscribe to our newsletter:</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/mgvaedke" method="POST">
+                        <input type="hidden" name="form-type" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" id="newsletterSubmitBtn" class="btn btn-small">Subscribe</button>
+                        <div id="newsletterMessage" style="display: none; margin-top: 10px; font-size: 14px;"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Café Serenity. All rights reserved. | Developed by <a href="https://web-production-8f65.up.railway.app/" target="_blank">NexLume</a></p>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
