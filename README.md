@@ -1,8 +1,8 @@
 # ☕ Café Serenity
 
-A modern, responsive café website showcasing menu, gallery, about, and contact pages with animations, a live chat widget, and interactive elements.
+A modern, responsive café website showcasing menu, gallery, about, and contact pages with animations, a live chat widget, and interactive elements.  
 
-![Preview](preview.png) <!-- Optional: Add a screenshot here -->
+**🌐 Live Demo:** [View Website](https://yourusername.github.io/cafe-serenity/)  
 
 ---
 
