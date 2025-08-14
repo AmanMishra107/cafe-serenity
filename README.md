@@ -2,7 +2,7 @@
 
 A modern, responsive café website showcasing menu, gallery, about, and contact pages with animations, a live chat widget, and interactive elements.  
 
-**🌐 Live Demo:** [View Website](https://yourusername.github.io/cafe-serenity/)  
+**🌐 Live Demo:** [View Website]([https://yourusername.github.io/cafe-serenity/](https://cafe-serenity.vercel.app/))  
 
 ---
 
