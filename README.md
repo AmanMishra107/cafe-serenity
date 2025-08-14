@@ -57,11 +57,6 @@ npx http-server .
 - **Images** – Replace image URLs with your own café images.
 - **Contact Form** – Change Formspree endpoint in `script.js` for email submissions.
 
----
-
-## 📸 Screenshot
-*(Replace this with an actual screenshot of your site)*  
-![Café Serenity Screenshot](preview.png)
 
 ---
 
